@@ -15,35 +15,43 @@
             box-sizing: border-box;
             font-weight: 600;
         }
-        a{
+
+        a {
             color: skyblue;
             text-decoration: none;
         }
-        header{
+
+        header {
             display: flex;
             flex-direction: column;
             margin-bottom: 2rem;
         }
-        button{
+
+        button {
             padding: 2px 4px;
         }
-        .active{
+
+        .active {
             color: red;
         }
-        .job-card-container{
+
+        .job-card-container {
             display: flex;
             flex-direction: column;
             gap: 1rem;
             padding: 1rem;
         }
-        .job-card{
+
+        .job-card {
             border: 1px solid rgb(255, 0, 0);
             padding: 1rem;
         }
-        .red{
-         color: red   
+
+        .red {
+            color: red
         }
-        .small-text{
+
+        .small-text {
             font-size: 0.8rem;
         }
     </style>
@@ -54,6 +62,18 @@
         <x-navlink :active="request()->is('/')" href="/">Home</x-navlink>
         <x-navlink :active="request()->is('jobs')" href="/jobs">Jobs</x-navlink>
         <x-navlink :active="request()->is('jobs/create')" href="/jobs/create">Create</x-navlink>
+
+        @auth
+           <form method="POST" action="/logout">
+            @csrf
+            <input type="submit" name="" id="" value="logout">
+           </form>
+        @endauth
+
+        @guest
+            <x-navlink :active="request()->is('login')" href="/login">login</x-navlink>
+            <x-navlink :active="request()->is('register')" href="/register">register</x-navlink>
+        @endguest
     </header>
     <div>
         {{ $slot }}

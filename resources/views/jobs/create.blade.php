@@ -4,21 +4,17 @@
 
         <form method="POST" action="/jobs">
             @csrf
-            <div>
-                <label for="">title : </label>
-                <input type="text" name="title" id="" required>
-                @error('title')
-                    <span class="red small-text">{{ $message }}</span>
-                @enderror
-            </div>
+            <x-formfield>
+                <x-formlabel for="title">title : </x-formlabel>
+                <x-forminput type="text" name="title" id="title" required />
+                <x-formerror name="title" />
+            </x-formfield>
 
-            <div>
-                <label for="">salary : </label>
-                <input type="text" name="salary" id="" required>
-                @error('salary')
-                    <span class="red small-text">{{ $message }}</span>
-                @enderror
-            </div>
+            <x-formfield>
+                <x-formlabel for="salary">salary : </x-formlabel>
+                <x-forminput type="text" name="salary" id="salary" required />
+                <x-formerror name="salary" />
+            </x-formfield>
 
             <button type="submit">Create</button>
         </form>

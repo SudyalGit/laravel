@@ -6,9 +6,12 @@
                 <a href="/jobs/{{ $job->id }}">
                     <strong>{{ $job->title }} : </strong> Pays {{ $job->salary }} per year
                 </a>
+
+                @can('edit-job', $job)
                 <div>
                     <button><a href="/jobs/{{ $job->id }}/edit">Edit</a></button>
                 </div>
+                @endcan
             </div>
     </div>
 </x-layout>
